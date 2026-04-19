@@ -19,7 +19,7 @@ We evaluate our method on three representative remote sensing forgery benchmarks
 
 | Dataset | Description | Source |
 |---------|-------------|--------|
-| **RSTFD** | Target-oriented forgery dataset covering airports, ports, and open-water scenes, with unified support for splicing, copy-move, and AIGC-based removal | This work.<br> Dataset link: [This work](https://github.com/1xyh23/RSTFD-dataset) |
+| **RSTFD** | Target-oriented forgery dataset covering airports, ports, and open-water scenes, with unified support for splicing, copy-move, and AIGC-based removal | This work.<br> Dataset link: [https://github.com/1xyh23/RSTFD-dataset](https://github.com/1xyh23/RSTFD-dataset) |
 | **SMTD** | High-resolution satellite map tampering dataset focusing on splicing forgery in urban scenes | [Spectral information guidance network for tampering localization of high-resolution satellite map](https://www.sciencedirect.com/science/article/pii/S0957417424021528)<br>Dataset link: [https://pan.baidu.com/s/12Gc8atDdHl8iYwwz_EwgaQ](https://pan.baidu.com/s/12Gc8atDdHl8iYwwz_EwgaQ) |
 | **Fake-Vaihingen** | Diffusion-based AIGC forgery dataset built on the Vaihingen aerial imagery benchmark | [FLDCF: A Collaborative Framework for Forgery Localization and Detection in Satellite Imagery](https://ieeexplore.ieee.org/document/10586763)<br>Dataset link: [https://github.com/littlebeen/Forgery-localization-for-remote-sensing](https://github.com/littlebeen/Forgery-localization-for-remote-sensing) |
 
