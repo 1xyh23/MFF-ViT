@@ -62,9 +62,23 @@ MFF-ViT shows significant advantages in challenging scenarios, especially AIGC-b
 The implementation of MFF-ViT will be released upon acceptance of the paper.
 
 ---
+### Overall Architecture
+```
+flowchart LR
+    A[Input Image<br/>(3, H, W)] --> B[Window Attention ViT Encoder<br/>Base Feature Extraction]
+    B --> C[HFD Attention Module<br/>High-Low Frequency Decoupling]
+    C --> D[Frequency-aware Feature Pyramid<br/>Multi-scale Frequency Fusion]
+    D --> E[MLP Prediction Head<br/>Feature Fusion & Prediction]
+    E --> F[Output Mask<br/>(1, H, W)]
+```
 
+### Module Description
+|Module File|Core Components|Description|
+|---|---|---|
+|`mff-vit.py`|`MFF_ViT`|The overall entry of the network, integrates all modules, completes end-to-end forward computation and multi-task loss calculation, supports framework model registration, and can be directly used for training and inference|
+|`window_attention_ff.py`|`ViT`/`FreqFusion`/`LocalSimGuidedSampler`|Window attention based ViT encoder for efficient local feature modeling; Built-in **Frequency-aware Feature Fusion Module** that explicitly separates and fuses high and low frequency components of features, compensating for the lack of high-frequency detail modeling in Transformer; Also supports feature-guided adaptive resampling to optimize feature alignment|
+|`hfd_module.py`|`ViT`/`HFDAttention`|High-Low Frequency Decoupled Attention module, splits attention heads into **High-frequency Local Window Attention** and **Low-frequency Global Attention**: The high-frequency branch captures local details via small window attention, while the low-frequency branch models long-range context via global attention, achieving both detail perception and global modeling with minimal extra overhead|
+|`decoderhead.py`|`PredictHead`|Multi-scale feature decoder head, unifies and fuses multi-scale features from feature pyramid after upsampling; Supports 3 normalization strategies: `BN`/`LN`/`IN`, which can be flexibly switched according to datasets and training configurations to improve model generalization|
 
 ---
 
-## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
